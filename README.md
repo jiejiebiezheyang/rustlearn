@@ -25,7 +25,8 @@ and finish in about 20 minutes.**
 - **Every chapter is self-contained.** Its own `fn main()`, its own types, no hidden shared helpers.
   Read one file and you have read the whole chapter.
 - **It answers "why", not just "what".** Each syntax point is documented with the problem it
-  solves, when to reach for it, and the pitfall that bites people (`// ⚠️ 常见坑:` markers).
+  solves, when to reach for it, and the pitfall that bites people. Every pitfall comment in the
+  sources starts with a `⚠️` marker, so `grep -rn '⚠️' src/bin/` lists all of them at once.
 - **It is verified, not wishful thinking.** All 16 binaries compile, pass
   `cargo clippy -- -D warnings`, are `rustfmt`-clean, and actually run with exit code 0 —
   see [Verification](#verification).
