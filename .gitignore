@@ -1,0 +1,39 @@
+# ---- Rust / Cargo build output -------------------------------------------
+target/
+
+# ---- Native artifacts that must never be committed -----------------------
+# Windows dynamic libraries and executables
+*.exe
+*.dll
+# Linux shared objects
+*.so
+# macOS dynamic libraries
+*.dylib
+# Static libraries and object files (extra safety)
+*.lib
+*.a
+*.o
+*.pdb
+
+# ---- Rust tooling / editor state ----------------------------------------
+# Backtraces and panics
+*.rs.bk
+# rust-analyzer / RLS scratch directories
+.flycheck*
+# `cargo expand` output
+*.expanded.rs
+
+# ---- OS / editor cruft ---------------------------------------------------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# ---- IMPORTANT: Cargo.lock is intentionally NOT ignored ------------------
+# This project builds binaries (src/bin/*.rs), not a library, and the
+# Cargo Book recommends committing Cargo.lock for binaries so that every
+# clone reproduces the exact same dependency versions.
+# See: https://doc.rust-lang.org/cargo/guide/cargo-toml-vs-cargo-lock.html
+# Do not add `Cargo.lock` here.

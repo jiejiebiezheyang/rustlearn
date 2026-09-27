@@ -1,0 +1,46 @@
+[package]
+name = "rustlearn"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+description = "A numbered, runnable tour of core Rust topics — one self-contained example per chapter."
+license = "MIT"
+publish = false
+
+# Every chapter is a standalone executable placed in src/bin/.
+# Cargo auto-discovers them, so no [[bin]] sections are needed:
+#   cargo run --bin 01_variables
+#   cargo test --bin 15_testing
+#
+# `src/main.rs` intentionally does NOT exist. Without a default binary,
+# `cargo run` asks you to pick a chapter with `--bin`, which keeps the
+# index in the README as the single source of truth.
+
+[dependencies]
+# --- Serialization / JSON (used by chapter 16) -------------------------------
+# `serde` is the de-facto serialization framework: it derives (de)serialization
+# code for your types via `#[derive(Serialize, Deserialize)]`.
+# The "derive" feature pulls in the `serde_derive` proc-macro crate.
+serde = { version = "1", features = ["derive"] }
+
+# `serde_json` is the JSON data format implementation for serde
+# (serde_json::Value, to_string, to_string_pretty, from_str).
+serde_json = "1"
+
+# --- Date & time (used by chapter 16) ---------------------------------------
+# `chrono` provides UTC/local timestamps, durations and formatting
+# (Utc::now, Local::now, DateTime<Utc>, TimeDelta, RFC 3339 helpers).
+chrono = "0.4"
+
+# NOTE: chapter 15 only *explains* Criterion (the statistics-driven benchmark
+# harness) and measures with std::time::Instant instead. Adding Criterion as a
+# dev-dependency would pull a large dependency tree into every `cargo test`
+# run for no teaching benefit, so it is deliberately not listed here.
+#
+# If you want to try it yourself, add:
+#   [dev-dependencies]
+#   criterion = "0.5"
+#   [[bench]]
+#   name = "my_bench"
+#   harness = false
+# and see chapter 15 for the annotated example.
